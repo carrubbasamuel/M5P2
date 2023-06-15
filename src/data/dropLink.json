@@ -1,0 +1,26 @@
+[
+    {
+        "eventKey": "fantasy",
+        "title": "Fantasy"
+    },
+    {
+        "eventKey": "scifi",
+        "title": "Science Fiction"
+    },
+    {
+        "eventKey": "horror",
+        "title": "Horror"
+    },
+    {
+        "eventKey": "romance",
+        "title": "Romance"
+    },
+    {
+        "eventKey": "history",
+        "title": "History"
+    },
+    {
+        "eventKey": "default",
+        "title": "Default"
+    }
+]

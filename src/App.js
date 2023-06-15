@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import './App.css';
+import Foot from './Components/Footer/footer';
+import Book from './Components/Header/Book/book';
+import Header from './Components/Header/header';
+import Nav from './Components/Navbar/navbar';
+
+
+
+
 
 function App() {
+
+  // useState is a hook that allows you to change the state of this variable olso in the child component
+  const[ category, setCategory ] = useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+
+      <Header setCategory={setCategory} />
+
+      <Book category={category} />
+
+      <Foot />
+    
+    </>
   );
 }
 
