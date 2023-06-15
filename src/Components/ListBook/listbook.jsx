@@ -15,23 +15,23 @@ export default function ListBook({category}) {
     switch (category) {
         case 'fantasy':
             return (
-                <Book categoryArray={fantasy} />      
+                <Book category={category} categoryArray={fantasy} />
             )
         case 'horror':
             return (
-                <Book categoryArray={horror} /> 
+                <Book category={category} categoryArray={horror} />
             )
         case 'history':
             return (
-                <Book categoryArray={history} /> 
+                <Book category={category} categoryArray={history} />
             )
         case 'romance':
             return (
-                <Book categoryArray={romance} /> 
+                <Book category={category} categoryArray={romance} />
             )
         case 'scifi':
             return (
-                <Book categoryArray={scifi} /> 
+                <Book category={category} categoryArray={scifi} />
             )
         default:
             return (
