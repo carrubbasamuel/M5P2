@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import './App.css';
 import Foot from './Components/Footer/footer';
-import Book from './Components/Header/Book/book';
-import Header from './Components/Header/header';
+import ListBook from './Components/ListBook/listbook';
+import DropGenre from './Components/DropGenre/dropgenre';
 import Nav from './Components/Navbar/navbar';
 
 
@@ -19,9 +19,9 @@ function App() {
     <>
       <Nav />
 
-      <Header setCategory={setCategory} />
+      <DropGenre setCategory={setCategory} />
 
-      <Book category={category} />
+      <ListBook category={category} />
 
       <Foot />
     

@@ -1,4 +1,4 @@
-export default function ListBook({ categoryArray }) {
+export default function Book({ categoryArray }) {
   return (
     <div className="row justify-content-center align-items-center">
       <h1 className="text-center fs-1">Fantasy</h1>
