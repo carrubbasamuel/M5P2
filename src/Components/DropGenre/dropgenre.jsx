@@ -1,5 +1,5 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import dropLink from '../../data/dropLink.json';
+import dropLink from './dropLink.json';
 
 export default function Header({setCategory}) {
   const handleSelect = (eventKey) => {
