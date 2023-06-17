@@ -1,7 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PaginationComponent from "./Pagination/pagination";
 import "./book.css";
 
 export default function Book({ categoryArray, category }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(categoryArray.length / itemsPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   //* Fade in animation use hook useEffect
   useEffect(() => {
@@ -9,7 +17,6 @@ export default function Book({ categoryArray, category }) {
     fade.forEach((element) => {
       element.classList.add("fade");
     });
-
 
     //*Clean up function
     setTimeout(() => {
@@ -20,18 +27,24 @@ export default function Book({ categoryArray, category }) {
   }, [category]);
 
   return (
+    <div>
+    {/* Contenuto della pagina */}
     <div className="row justify-content-center align-items-start">
-      <h1 className="text-center fs-1">
-        {category.charAt(0).toUpperCase() + category.slice(1)}
-      </h1>
-      {categoryArray.map((book) => {
-        return (
-          <div className="col-3">
+      {categoryArray
+        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+        .map((book, index) => (
+          <div className="col-3" key={index}>
             <img src={book.img} alt="book cover" />
             <h1>{book.title}</h1>
           </div>
-        );
-      })}
+        ))}
+    </div>
+
+      <PaginationComponent
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }

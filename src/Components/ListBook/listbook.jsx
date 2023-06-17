@@ -35,8 +35,6 @@ export default function ListBook({category}) {
             )
         default:
             return (
-                <div className='container d-flex justify-content-center shadow mt-5 p-3 w-25 h-100' >
-                    <h1>Select...</h1>
-                </div>
+                <Book category={category} categoryArray={fantasy} />
             )}
 }
