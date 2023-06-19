@@ -1,5 +1,6 @@
 import React from 'react';
 import Pagination from 'react-bootstrap/Pagination';
+import './pagination.css';
 
 const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
     

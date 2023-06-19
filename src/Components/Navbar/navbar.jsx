@@ -8,7 +8,7 @@ import './navbar.css';
 
 export default function Nav() {
   return (
-    <Navbar style={{backgroundColor:"rgb(231,137,110)"}}>
+    <Navbar className='shadow' style={{backgroundColor:"rgb(231,137,110)"}}>
       <Container>
         <Navbar.Brand href="#home"><img width={20} src={logo} alt="" /></Navbar.Brand>
         <Navbar.Toggle />

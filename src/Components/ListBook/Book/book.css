@@ -19,7 +19,14 @@ div.col-3{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     border-radius: 10px;
     margin: 10px;
+    transition: all 0.3s ease-in-out;
     
+}
+
+div.col-3:hover{
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    transform: scale(1.02);
+    cursor: pointer;
 }
 
 
@@ -37,4 +44,11 @@ h1{
     margin: 0px;
     padding: 30px;
     color: #000;
+}
+
+@media screen and (max-width: 768px) {
+    div.col-3 h1{
+        font-size: 8px!important;
+    }
+    
 }

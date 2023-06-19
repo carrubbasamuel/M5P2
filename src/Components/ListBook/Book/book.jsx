@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import PaginationComponent from "./Pagination/pagination";
 import "./book.css";
 
-export default function Book({ categoryArray, category }) {
+export default function Book({ search, categoryArray, category }) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState([]);
   const itemsPerPage = 9;
   const totalPages = Math.ceil(categoryArray.length / itemsPerPage);
 
@@ -17,34 +18,49 @@ export default function Book({ categoryArray, category }) {
     fade.forEach((element) => {
       element.classList.add("fade");
     });
-
     //*Clean up function
     setTimeout(() => {
       fade.forEach((element) => {
         element.classList.remove("fade");
       });
     }, 1000);
+    setCurrentPage(1);
   }, [category]);
+
+
+  
+  useEffect(() => {
+    if (search === "") {
+      setFilter(categoryArray);
+    } else {
+      let filterArray = categoryArray.filter((book) =>
+        book.title.toLowerCase().includes(search.toLowerCase())
+      );
+
+      setFilter(filterArray);
+    }
+  }, [search, categoryArray]);
 
   return (
     <div>
-    {/* Contenuto della pagina */}
-    <div className="row justify-content-center align-items-start">
-      {categoryArray
-        .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-        .map((book, index) => (
-          <div className="col-3" key={index}>
-            <img src={book.img} alt="book cover" />
-            <h1>{book.title}</h1>
-          </div>
-        ))}
-    </div>
+      <div className="row justify-content-center align-items-start">
+        {filter
+          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+          .map((book, index) => (
+            <div className="col-3" key={index}>
+              <img src={book.img} alt="book cover" />
+              <h1>{book.title}</h1>
+            </div>
+          ))}
+      </div>
 
-      <PaginationComponent
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <div className="d-flex justify-content-center align-items-start mt-5">
+        <PaginationComponent
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 }
