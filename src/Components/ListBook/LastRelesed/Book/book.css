@@ -1,19 +1,4 @@
-.fade{
-    animation: fadein 1s forwards;
-}
 
-@keyframes fadein {
-    0% {
-        transform: translateY(20px);
-        opacity: 0;
-        
-    }
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-        
-    }
-}
 div.col-3{
     padding: 0px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
@@ -23,7 +8,7 @@ div.col-3{
     
 }
 
-div.col-3:hover{
+.noselect:hover{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
     transform: scale(1.02);
     cursor: pointer;
@@ -44,6 +29,12 @@ h1{
     margin: 0px;
     padding: 30px;
     color: #000;
+}
+
+.select{
+    border: 2px solid red;
+    opacity: 0.8;
+  transform: scale(0.8);
 }
 
 @media screen and (max-width: 768px) {

@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
+import Book from "./Book/book.jsx";
 import Empty from "./Empty/empty.jsx";
-import PaginationComponent from "./Pagination/pagination";
-import "./book.css";
+import PaginationComponent from "./Pagination/pagination.jsx";
+import "./lastrelesed.css";
 
-export default function Book({ search, categoryArray, category }) {
+export default function LastRelesed({ search, categoryArray, category }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState([]);
+
+
   const itemsPerPage = 9;
   const totalPages = Math.ceil(categoryArray.length / itemsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+
 
   //* Fade in animation use hook useEffect
   useEffect(() => {
@@ -29,7 +34,7 @@ export default function Book({ search, categoryArray, category }) {
   }, [category]);
 
 
-
+  //* Filter book by search
   useEffect(() => {
     if (search === "") {
       setFilter(categoryArray);
@@ -47,10 +52,7 @@ export default function Book({ search, categoryArray, category }) {
     <div>
       <div className="row justify-content-center align-items-start">
         {filter.length > 0 ? filter.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((book, index) => (
-            <div className="col-3" key={index}>
-              <img src={book.img} alt="book cover" />
-              <h1>{book.title}</h1>
-            </div>
+            <Book key={index} currentBook={book} category={category} />
           ))
         : <Empty />
         }

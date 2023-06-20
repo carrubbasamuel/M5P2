@@ -2,9 +2,9 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 export default function Search({ setSearch }) {
+  
   const handlerInput = () => {
     let input = document.getElementById("search").value;
-    console.log(input);
     setSearch(input);
   };
 

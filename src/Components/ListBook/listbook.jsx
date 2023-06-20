@@ -6,36 +6,37 @@ import scifi from '../../data/scifi.json'
 
 
 
-import Book from './Book/book'
+
+import LastRelesed from './LastRelesed/lastreleased'
 
 
 
 
-export default function ListBook({search, category, setSearch}) {
+export default function ListBook({search, category}) {
 
     switch (category) {
         case 'fantasy':
             return (
-                <Book search={search} category={category} categoryArray={fantasy} />
+                <LastRelesed search={search} category={category} categoryArray={fantasy} />
             )
         case 'horror':
             return (
-                <Book search={search} category={category} categoryArray={horror} />
+                <LastRelesed search={search} category={category} categoryArray={horror} />
             )
         case 'history':
             return (
-                <Book search={search} category={category} categoryArray={history} />
+                <LastRelesed search={search} category={category} categoryArray={history} />
             )
         case 'romance':
             return (
-                <Book search={search} category={category} categoryArray={romance} />
+                <LastRelesed search={search} category={category} categoryArray={romance} />
             )
         case 'scifi':
             return (
-                <Book search={search} category={category} categoryArray={scifi} />
+                <LastRelesed search={search} category={category} categoryArray={scifi} />
             )
         default:
             return (
-                <Book search={search} category={category} categoryArray={fantasy} setSearch={setSearch} />
+                <LastRelesed search={search} category={category} categoryArray={fantasy} />
             )}
 }
