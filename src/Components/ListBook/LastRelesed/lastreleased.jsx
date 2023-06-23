@@ -7,10 +7,11 @@ import "./lastrelesed.css";
 export default function LastRelesed({ search, categoryArray, category }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState([]);
-
-
+  const [show, setShow] = useState(false);
   const itemsPerPage = 9;
   const totalPages = Math.ceil(categoryArray.length / itemsPerPage);
+
+  
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -52,7 +53,7 @@ export default function LastRelesed({ search, categoryArray, category }) {
     <div>
       <div className="row justify-content-center align-items-start">
         {filter.length > 0 ? filter.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((book, index) => (
-            <Book key={index} currentBook={book} category={category} />
+            <Book key={index} currentBook={book} category={category} currentPage={currentPage} />
           ))
         : <Empty />
         }

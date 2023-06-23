@@ -10,6 +10,8 @@ import Nav from './Components/Navbar/navbar';
 
 
 
+
+
 function App() {
 
   // useState is a hook that allows you to change the state of this variable olso in the child component
