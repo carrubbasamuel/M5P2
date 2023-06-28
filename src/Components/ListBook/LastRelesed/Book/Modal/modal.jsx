@@ -1,52 +1,19 @@
-import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import AddReview from './AddReview/addreview.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAsin, setModalOpen } from '../../../../../redux/reducers/bookAction';
+import AddReview from './AddReview/addreview';
 import ListReview from './ListReview/listreview.jsx';
 
-export default function ModalReview({ asin, setShow, setIsOpen }) {
-    const[review, setReview] = useState([]);
-    const[showAdded, setShowAdded] = useState(false);//*per altro modale
 
-    const handleClickReview = ()=>{
-        setShowAdded(!showAdded);
-    }
+export default function ModalReview() {
+    const dispatch = useDispatch();
+    const review = useSelector((state) => state.root.review.reviewArray);
+  
 
-    const endPointPost = `https://striveschool-api.herokuapp.com/api/comments/`
-    const endpoint = `https://striveschool-api.herokuapp.com/api/comments/${asin}`
-    const key = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDdlM2MxNmI5YzBmNzAwMTQ0ODRlZDgiLCJpYXQiOjE2ODc1NDI0MzEsImV4cCI6MTY4ODc1MjAzMX0.d6MQUWUpdusXGvNd72LzIvVPzs6OxCfRXI1iQkTjhy8"
-   
-    useEffect(()=>{
-        fetch(endpoint, {
-            method: "GET",
-            headers: {
-                "Authorization": key
-            }
-        })
-        .then(response => response.json())
-        .then(data => {console.log(data);setReview(data)})
-        .catch(err => console.log(err))
-    },[])
-
-    const postReview = async (review) => {
-        try{
-            const response = await fetch(endPointPost, {
-                method: "POST",
-                body: JSON.stringify(review),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": key
-                }
-            })
-            if(response.ok){
-                setShow(false)
-                setIsOpen(false)
-            }
-        }catch(err){
-            console.log(err)
-        }
-    }
-
+    const handleShow = () => {
+      dispatch(setModalOpen(false));
+    };
 
   return (
     <div
@@ -55,15 +22,15 @@ export default function ModalReview({ asin, setShow, setIsOpen }) {
     >
       <Modal.Dialog>
       <Modal.Title className='ms-3'>Review</Modal.Title>
-        <Modal.Body style={{pointerEvents: 'none'}}>
+        <Modal.Body>
             {review.length === 0 && <p>There are no reviews for this book!</p>}
-            <ListReview review={review}/>
+            <ListReview />
         </Modal.Body>
 
         <Modal.Footer>
-          <Button onClick={()=> {setShow(false); setIsOpen(false)}} variant="secondary">Close</Button>
-          <AddReview asin={asin} show={showAdded} postReview={postReview} handleClickReview={handleClickReview}/>
-        </Modal.Footer>
+          <Button onClick={handleShow} variant="secondary">Close</Button>
+          <AddReview />
+        </Modal.Footer> 
       </Modal.Dialog>
     </div>
   );

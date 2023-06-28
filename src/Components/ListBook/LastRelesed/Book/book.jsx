@@ -1,64 +1,45 @@
-import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useDispatch } from "react-redux";
+import { setAsin, setModalOpen, setSelect } from "../../../../redux/reducers/bookAction";
+import { fetchReview } from "../../../../redux/reducers/review";
 import ModalReview from "./Modal/modal";
 import "./book.css";
 
-export default function Book({ currentBook, category, currentPage }) {
 
-  const [show, setShow] = useState(false);
-  const [isSelected, setIsSelected] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
-  //Toggle for select book
+export default function Book({ currentBook }) {
+  const dispatch = useDispatch();
+
   const handleClick = () => {
-    setIsSelected(!isSelected);
-    setShow(false);
-   isSelected ? setIsOpen(false) : setIsOpen(true);
+    dispatch(setSelect(false));
+    if (!currentBook.isSelected) {
+      dispatch(setAsin(currentBook.asin));
+      dispatch(setSelect(true));
+    }
   };
 
-  //Toggle modal Review
-  const handleToggleReview = () => {
-    setIsLoading(true);
-    setIsOpen(true);
-    setTimeout(() => {
-      setShow(!show);
-      setIsLoading(false);
-    }, 1000);
+  const handleClickReview = async () => {
+    dispatch(setModalOpen(false))
+    if (!currentBook.isOpen) {
+      dispatch(setAsin(currentBook.asin));
+      await dispatch(fetchReview(currentBook.asin));
+      dispatch(setModalOpen(true));
+    }
   };
 
-  //Refres component
-  useEffect(() => {
-    setIsSelected(false);
-    setShow(false);
-    setIsOpen(false);
-  }, [category, currentPage]);
 
   return (
-    <Card className={`col-3 ${isSelected ? "select" : "noselect"}`}>
-      <Card.Img onClick={handleClick} variant="top" src={currentBook.img} />
+    <Card className={`col-3 ${currentBook.isSelected ? "select" : "noselect"}`}>
+      <Card.Img variant="top" src={currentBook.img} onClick={handleClick} />
       <Card.Body>
         <Card.Title>{currentBook.title}</Card.Title>
       </Card.Body>
       <Card.Footer>
-        <button onClick={handleToggleReview} className={`btn btn-primary ${isOpen ? "d-none" : "d-block"}`}>
-          Review
-        </button>
-        {isLoading &&
-          <Spinner
-            animation="border"
-            variant="primary"
-          />
+        <Button variant="primary" onClick={handleClickReview}>Review</Button>
+        {
+          currentBook.isOpen ? <ModalReview /> : null
         }
-        {show && (
-          <ModalReview
-            asin={currentBook.asin}
-            setShow={setShow}
-            setIsOpen={setIsOpen}
-
-          />
-        )}
       </Card.Footer>
     </Card>
   );

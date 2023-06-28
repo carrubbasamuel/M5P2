@@ -1,21 +1,27 @@
+import { useRef } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { useDispatch } from "react-redux";
+import { setSearch } from "../../../redux/reducers/bookAction";
 
-export default function Search({ setSearch }) {
-  
+
+
+export default function Search() {
+  const dispatch = useDispatch();
+  const search = useRef();
+
   const handlerInput = () => {
-    let input = document.getElementById("search").value;
-    setSearch(input);
+    dispatch(setSearch(search.current.value));
   };
 
   return (
     <InputGroup size="sm" className="p-5">
       <InputGroup.Text id="inputGroup-sizing-sm">Search </InputGroup.Text>
       <Form.Control
-        id="search"
+        ref={search}
         aria-label="Small"
         aria-describedby="inputGroup-sizing-sm"
-        onChange={handlerInput}
+        onKeyDown={handlerInput}
       />
     </InputGroup>
   );

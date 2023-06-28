@@ -1,76 +1,41 @@
-import { useEffect, useState } from "react";
-import Book from "./Book/book.jsx";
-import Empty from "./Empty/empty.jsx";
-import PaginationComponent from "./Pagination/pagination.jsx";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import Book from "./Book/book";
+import Empty from "./Empty/empty";
 import "./lastrelesed.css";
 
-export default function LastRelesed({ search, categoryArray, category }) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filter, setFilter] = useState([]);
-  const [show, setShow] = useState(false);
-  const itemsPerPage = 9;
-  const totalPages = Math.ceil(categoryArray.length / itemsPerPage);
 
+export default function LastRelesed() {
   
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  const originalBookArray = useSelector((state) => state.root.book.originalBookArray);
+  const bookArray = useSelector((state) => state.root.book.bookArray);
 
 
 
-  //* Fade in animation use hook useEffect
+
   useEffect(() => {
     const fade = document.querySelectorAll("div.col-3");
     fade.forEach((element) => {
       element.classList.add("fade");
     });
+
+
     //*Clean up function
     setTimeout(() => {
       fade.forEach((element) => {
         element.classList.remove("fade");
       });
     }, 1000);
-    setCurrentPage(1);
-  }, [category]);
-
-
-  //* Filter book by search
-  useEffect(() => {
-    if (search === "") {
-      setFilter(categoryArray);
-    } else {
-      let filterArray = categoryArray.filter((book) =>
-        book.title.toLowerCase().includes(search.toLowerCase())
-      );
-      setFilter(filterArray);
-    }
-  }, [search, categoryArray]);
-
+  }, [originalBookArray]); 
 
 
   return (
-    <div>
       <div className="row justify-content-center align-items-start">
-        {filter.length > 0 ? filter.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((book, index) => (
-            <Book key={index} currentBook={book} category={category} currentPage={currentPage} />
+        {bookArray.length > 0 ? bookArray.map((book, index) => (
+            <Book key={index} currentBook={book} />
           ))
         : <Empty />
         }
       </div>
-
-      <div className="d-flex justify-content-center align-items-start mt-5">
-        {
-          filter.length >0
-          && <PaginationComponent
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          
-        />
-        }
-        
-      </div>
-    </div>
   );
 }

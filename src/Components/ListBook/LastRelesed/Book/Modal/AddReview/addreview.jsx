@@ -1,4 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postReview, setAddReviewOpen } from "../../../../../../redux/reducers/review";
+
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -8,13 +12,12 @@ import "./addreview.css";
 
 
 
-export default function AddReview({ handleClickReview, show, postReview, asin }) {
+export default function AddReview() {
+    const dispatch = useDispatch();
     const text = useRef();
-    const [rating, setRating] = useState(0);
-
-    useEffect(()=>{
-        setRating(0);
-    },[show])
+    const isAddReviewOpen = useSelector((state) => state.root.review.isAddReviewOpen);
+    const rating = useSelector((state) => state.root.review.addRate);
+    const asin = useSelector((state) => state.root.book.asin);
 
     const handleSave = ()=>{
         const newReview = {
@@ -22,20 +25,19 @@ export default function AddReview({ handleClickReview, show, postReview, asin })
             rate: rating,
             elementId: asin
         }
-        postReview(newReview);
-        handleClickReview();
-    }
+        dispatch(postReview(newReview));
+    }  
 
-  if (!show) {
+  if (!isAddReviewOpen) {
     return (
-      <Button variant="primary" onClick={handleClickReview}>
+      <Button onClick={()=> dispatch(setAddReviewOpen())} variant="primary">
         Add Review
       </Button>
     );
   }
   return (
-    <Modal show={show} className="modale">
-      <Modal.Header onClick={handleClickReview} closeButton>
+    <Modal show={isAddReviewOpen} className="modale">
+      <Modal.Header onClick={()=>dispatch(setAddReviewOpen())} closeButton>
         <Modal.Title>Add new review</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -44,13 +46,13 @@ export default function AddReview({ handleClickReview, show, postReview, asin })
           <Form.Control ref={text} as="textarea" aria-label="With textarea" />
         </InputGroup>
         <InputGroup className="ratingMod">
-          <Rating rating={rating} setRating={setRating} />
+          <Rating  /> 
         </InputGroup>
 
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleClickReview} variant="secondary">Close</Button>
-        <Button onClick={handleSave} variant="primary">Save Changes</Button>
+        <Button onClick={()=>dispatch(setAddReviewOpen())} variant="secondary">Close</Button>
+        <Button onClick={handleSave}  variant="primary">Save Changes</Button>
       </Modal.Footer>
     </Modal>
   );

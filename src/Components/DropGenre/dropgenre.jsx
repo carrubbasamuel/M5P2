@@ -1,23 +1,23 @@
-import { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory } from '../../redux/reducers/bookAction';
 import dropLink from './dropLink.json';
 import './dropgenre.css';
 
-export default function Header({setCategory}) {
-  const [choose, setChoose] = useState('Choose a category');
+export default function Header() {
+  const dispatch = useDispatch();
+  const category = useSelector((state) => state.root.book.bookGenre);
 
-
-  const handleSelect = (eventKey) => {
-    setCategory(eventKey);
-    setChoose(eventKey);
+  const handleSelect = (e) => {
+    dispatch(setCategory(e));
   };
+  
 
   return (
     <Dropdown onSelect={handleSelect} className='container d-flex justify-content-center p-5'>
       <Dropdown.Toggle id="dropdown-basic">
-        {choose.toUpperCase()}
+        {category.charAt(0).toUpperCase() + category.slice(1)}
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
         {
           dropLink.map((link) => {
