@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import modeReducer from "./reducers/ModeState";
 import bookReducer from "./reducers/bookAction";
 import reviewReducer from "./reducers/review";
-import modeReducer from "./reducers/ModeState";
 
 
 

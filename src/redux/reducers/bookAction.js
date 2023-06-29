@@ -24,13 +24,10 @@ const bookSlice = createSlice({
         },
         setSearch: (state, action) => {
             const searchQuery = action.payload;
-            if (searchQuery === "") {
-                state.bookArray = state.originalBookArray; // Reimposta l'array completo
-            } else {
-                state.bookArray = state.originalBookArray.filter((book) => {
-                    return book.title.toLowerCase().includes(searchQuery);
-                });
-            }
+            state.bookArray = state.originalBookArray.filter((book) => {
+                return book.title.toLowerCase().includes(searchQuery);
+            });
+
         },
         setSelect: (state, action) => {
             const bookSelected = state.bookArray.find((book) => book.asin === state.asin);
@@ -49,14 +46,14 @@ const bookSlice = createSlice({
 
 
 
-export const { 
-    
+export const {
+
     setCategory,
     setBookArray,
     setSearch,
     setSelect,
     setModalOpen,
-    setAsin 
+    setAsin
 
 } = bookSlice.actions;
 

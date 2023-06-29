@@ -21,9 +21,9 @@ export default function Header() {
       </Dropdown.Toggle>
       <Dropdown.Menu>
         {
-          dropLink.map((link) => {
+          dropLink.map((link, index) => {
             return (
-              <Dropdown.Item eventKey={link.eventKey}>{link.title}</Dropdown.Item>
+              <Dropdown.Item key={index} eventKey={link.eventKey}>{link.title}</Dropdown.Item>
             )
           })
         }

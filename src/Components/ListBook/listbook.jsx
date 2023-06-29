@@ -17,35 +17,26 @@ export default function ListBook() {
   
     switch (category) {
       case 'fantasy':
-        return(
-            dispatch(setBookArray(fantasy)),
-            <LastRelesed  />
-        ) 
+            dispatch(setBookArray(fantasy));
+            break;
       case 'horror':
-        return (
-            dispatch(setBookArray(horror)),
-            <LastRelesed  />
-        )
+        
+        dispatch(setBookArray(horror));
+        break;
       case 'history':
-        return (
-            dispatch(setBookArray(history)),
-            <LastRelesed  />
-        )
+        dispatch(setBookArray(history));
+        break;
       case 'romance':
-        return (
-            dispatch(setBookArray(romance)),
-            <LastRelesed  />
-        )
+        dispatch(setBookArray(romance));
+        break;
       case 'scifi':
-        return (
-            dispatch(setBookArray(scifi)),
-            <LastRelesed />
-        )
+        dispatch(setBookArray(scifi));
+        break;
       default:
-        return (
-            dispatch(setBookArray(fantasy)),
-            <LastRelesed />
-        )
+        dispatch(setBookArray(fantasy));
+        break;
     }
+
+    return <LastRelesed />;
   }
   
