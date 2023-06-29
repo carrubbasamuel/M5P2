@@ -46,7 +46,6 @@ export const postReview = createAsyncThunk(
 
 const initialState = {
     reviewArray: [],
-    isAddReviewOpen: false,
     addRate: 0,
 }
 

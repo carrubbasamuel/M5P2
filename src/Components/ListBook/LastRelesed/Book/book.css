@@ -43,3 +43,16 @@ h1{
     }
     
 }
+
+
+.nero{
+    background-color: #000!important;
+    color: #fff!important;
+    border-color: #fff;
+}
+
+.bianco{
+    background-color: #fff!important;
+    color: #000!important;
+    border-color: #000;
+}

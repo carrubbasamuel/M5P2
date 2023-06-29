@@ -5,7 +5,6 @@ const initialState = {
     bookArray: [],
     bookGenre: "Choose a category",
     originalBookArray: [], // Aggiungi un campo per mantenere il valore originale dell'array
-    isOpen: false,
     asin: "",
 };
 

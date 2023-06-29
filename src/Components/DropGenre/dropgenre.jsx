@@ -7,6 +7,7 @@ import './dropgenre.css';
 export default function Header() {
   const dispatch = useDispatch();
   const category = useSelector((state) => state.root.book.bookGenre);
+  const mode = useSelector((state) => state.root.modeRedux.mode);
 
   const handleSelect = (e) => {
     dispatch(setCategory(e));
@@ -14,8 +15,8 @@ export default function Header() {
   
 
   return (
-    <Dropdown onSelect={handleSelect} className='container d-flex justify-content-center p-5'>
-      <Dropdown.Toggle id="dropdown-basic">
+    <Dropdown onSelect={handleSelect} className={mode === 'dark' ? "d-flex justify-content-center p-5 bg-dark" : "d-flex justify-content-center p-5 bg-light"}>
+      <Dropdown.Toggle id="dropdown-basic" className={mode === 'dark' ? "light" : "dark"}>
         {category.charAt(0).toUpperCase() + category.slice(1)}
       </Dropdown.Toggle>
       <Dropdown.Menu>

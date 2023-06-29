@@ -1,27 +1,37 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../asset/logo-removebg.png';
+import { BsFillSunFill } from 'react-icons/bs';
+import { RiMoonFill } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
+import logoDark from '../../asset/logo-dark.png';
+import logo from '../../asset/logo.png';
+import { setMode } from '../../redux/reducers/ModeState';
 import Search from './Search/search.jsx';
 import './navbar.css';
 
-
-
-
 export default function Nav() {
+  const mode = useSelector((state) => state.root.modeRedux.mode);
+  const dispatch = useDispatch();
+
+
   return (
-    <Navbar className='shadow' style={{backgroundColor:"rgb(231,137,110)"}}>
+    <Navbar className={mode === 'light' ? "bg-light" : "bg-dark"}>
       <Container>
-        <Navbar.Brand href="#home"><img width={20} src={logo} alt="" /></Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <img id='logo' src={mode === 'light' ? logo : logoDark} alt="" />
+        </Navbar.Brand>
+
+        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}>Home</Navbar.Text>
+        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}>Best Seles</Navbar.Text>
+        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}>Join With Us</Navbar.Text>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-        <Search />
-          <Navbar.Text>
-            Author: <a href="https://github.com/carrubbasamuel">Carrubba Samuel</a>
-          </Navbar.Text>
+          <Search />
         </Navbar.Collapse>
-    
+        <div onClick={() => dispatch(setMode())} className={mode === 'light' ? "modeState text-dark" : "modeState text-light"}>
+          {mode === 'light' ? <RiMoonFill /> : <BsFillSunFill />}
+        </div>
       </Container>
     </Navbar>
   );
 }
-

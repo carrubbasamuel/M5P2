@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAsin, setModalOpen, setSelect } from "../../../../redux/reducers/bookAction";
 import { fetchReview } from "../../../../redux/reducers/review";
 import ModalReview from "./Modal/modal";
@@ -10,6 +10,7 @@ import "./book.css";
 
 export default function Book({ currentBook }) {
   const dispatch = useDispatch();
+  const mode = useSelector((state) => state.root.modeRedux.mode);
 
   const handleClick = () => {
     dispatch(setSelect(false));
@@ -32,11 +33,13 @@ export default function Book({ currentBook }) {
   return (
     <Card className={`col-3 ${currentBook.isSelected ? "select" : "noselect"}`}>
       <Card.Img variant="top" src={currentBook.img} onClick={handleClick} />
-      <Card.Body>
-        <Card.Title>{currentBook.title}</Card.Title>
+      <Card.Body className={mode === 'light' ? "bianco" : "nero"}>
+        <Card.Title className="">{currentBook.title}</Card.Title>
+        <Card.Text>Category: {currentBook.category}</Card.Text>
+        <Card.Text>{currentBook.price} $</Card.Text>
       </Card.Body>
-      <Card.Footer>
-        <Button variant="primary" onClick={handleClickReview}>Review</Button>
+      <Card.Footer className={mode === 'light' ? "bianco" : "nero"}>
+        <Button className={mode === 'light' ? "bianco" : "nero"} onClick={handleClickReview}>Review</Button>
         {
           currentBook.isOpen ? <ModalReview /> : null
         }

@@ -1,0 +1,37 @@
+#logo{
+    width: 250px;
+}
+
+
+span.navbar-text:not(:first-child){
+    margin: 0 20px;
+}
+
+span.navbar-text:hover{
+    color: #ccc8c8;
+    cursor: pointer;
+}
+
+button.light{
+    background-color: #fff;
+    border: none;
+    outline: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.modeState{
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #000;
+}
+
+.modeState svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
