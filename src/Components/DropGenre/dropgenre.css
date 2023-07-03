@@ -13,3 +13,15 @@
     color: #fff;
     cursor: pointer;
 }
+
+#dropdown-basic{
+    padding: 10px 50px;
+    border-radius: 25px;
+}
+
+.dropdown-item{
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-align: center;
+}
+

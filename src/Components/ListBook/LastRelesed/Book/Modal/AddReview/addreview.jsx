@@ -30,7 +30,7 @@ export default function AddReview() {
 
   if (!isAddReviewOpen) {
     return (
-      <Button onClick={()=> dispatch(setAddReviewOpen())} variant="primary">
+      <Button onClick={()=> dispatch(setAddReviewOpen())} variant="outline-secondary">
         Add Review
       </Button>
     );
@@ -52,7 +52,7 @@ export default function AddReview() {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={()=>dispatch(setAddReviewOpen())} variant="secondary">Close</Button>
-        <Button onClick={handleSave}  variant="primary">Save Changes</Button>
+        <Button onClick={handleSave}  variant="outline-secondary">Save Changes</Button>
       </Modal.Footer>
     </Modal>
   );

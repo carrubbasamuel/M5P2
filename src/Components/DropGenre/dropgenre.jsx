@@ -15,7 +15,7 @@ export default function Header() {
   
 
   return (
-    <Dropdown onSelect={handleSelect} className={mode === 'dark' ? "d-flex justify-content-center p-5 bg-dark" : "d-flex justify-content-center p-5 bg-light"}>
+    <Dropdown drop={"down-centered"} onSelect={handleSelect} className={`d-flex justify-content-center p-5 ${mode === 'dark' ? "bg-dark" : "bg-light"}`}>
       <Dropdown.Toggle id="dropdown-basic" className={mode === 'dark' ? "light" : "dark"}>
         {category.charAt(0).toUpperCase() + category.slice(1)}
       </Dropdown.Toggle>

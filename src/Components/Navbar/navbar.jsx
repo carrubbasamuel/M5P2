@@ -15,7 +15,7 @@ export default function Nav() {
 
 
   return (
-    <Navbar className={mode === 'light' ? "bg-light" : "bg-dark"}>
+    <Navbar className={`shadow ${mode === 'light' ? "bg-light" : "bg-dark"}`}>
       <Container>
         <Navbar.Brand href="#home">
           <img id='logo' src={mode === 'light' ? logo : logoDark} alt="" />

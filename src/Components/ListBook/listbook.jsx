@@ -20,7 +20,6 @@ export default function ListBook() {
             dispatch(setBookArray(fantasy));
             break;
       case 'horror':
-        
         dispatch(setBookArray(horror));
         break;
       case 'history':
