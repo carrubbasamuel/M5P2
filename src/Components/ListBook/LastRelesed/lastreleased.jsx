@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Book from "./Book/book";
 import Empty from "./Empty/empty";
+import Review from "./Review/review";
 import "./lastrelesed.css";
 
 
@@ -22,7 +23,6 @@ export default function LastRelesed() {
       element.classList.add("fade");
     });
 
-
     //*Clean up function
     setTimeout(() => {
       fade.forEach((element) => {
@@ -40,6 +40,7 @@ export default function LastRelesed() {
           ))
         : <Empty />
         }
+        <Review />
       </div>
     </div>
       

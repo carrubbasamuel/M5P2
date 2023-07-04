@@ -16,16 +16,8 @@ export default function Book({ currentBook }) {
     dispatch(setSelect(false));
     if (!currentBook.isSelected) {
       dispatch(setAsin(currentBook.asin));
+      dispatch(fetchReview(currentBook.asin));
       dispatch(setSelect(true));
-    }
-  };
-
-  const handleClickReview = async () => {
-    dispatch(setModalOpen(false))
-    if (!currentBook.isOpen) {
-      dispatch(setAsin(currentBook.asin));
-      await dispatch(fetchReview(currentBook.asin));
-      dispatch(setModalOpen(true));
     }
   };
 
@@ -38,12 +30,6 @@ export default function Book({ currentBook }) {
         <Card.Text>Category: {currentBook.category}</Card.Text>
         <Card.Text>{currentBook.price} $</Card.Text>
       </Card.Body>
-      <Card.Footer className={mode === 'light' ? "bianco" : "nero"}>
-        <Button className={mode === 'light' ? "bianco" : "nero"} onClick={handleClickReview}>Review</Button>
-        {
-          currentBook.isOpen ? <ModalReview /> : null
-        }
-      </Card.Footer>
     </Card>
   );
 }
