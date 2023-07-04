@@ -1,11 +1,8 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAddRate } from '../../../../../../../redux/reducers/review';
+import React, { useState } from 'react';
 
 
 const Rating = ({ rate }) => {
-  const dispatch = useDispatch();
-  const ratingVs = useSelector((state) => state.root.review.addRate);
+  const [rateing , setRateing] = useState(0);
 
   return (
     <div>
@@ -14,8 +11,8 @@ const Rating = ({ rate }) => {
           <Star
             key={value}
             value={value}
-            isSelected={value <= rate || value <= ratingVs}
-            handleClick={() => dispatch(setAddRate(value))}
+            isSelected={value <= rate || value <= rateing}
+            handleClick={() => setRateing(value)}
           />
         ))}
       </div>

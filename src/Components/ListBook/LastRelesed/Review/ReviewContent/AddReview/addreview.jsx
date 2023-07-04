@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Modal from "react-bootstrap/Modal";
-import Rating from "./Rating/rating";
+import Rating from "../Rating/rating";
 import "./addreview.css";
 
 

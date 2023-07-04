@@ -34,12 +34,6 @@ const bookSlice = createSlice({
             if (bookSelected) {
                 bookSelected.isSelected = action.payload;
             }
-        },
-        setModalOpen: (state, action) => {
-            const bookModal = state.bookArray.find((book) => book.asin === state.asin);
-            if (bookModal) {
-                bookModal.isOpen = action.payload;
-            }
         }
     },
 });
@@ -52,7 +46,6 @@ export const {
     setBookArray,
     setSearch,
     setSelect,
-    setModalOpen,
     setAsin
 
 } = bookSlice.actions;

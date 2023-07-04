@@ -1,9 +1,8 @@
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { setAsin, setModalOpen, setSelect } from "../../../../redux/reducers/bookAction";
-import { fetchReview } from "../../../../redux/reducers/review";
-import ModalReview from "./Modal/modal";
+import { setAsin, setSelect } from "../../../../redux/reducers/bookAction";
+import { fetchReview, setAddButton, setReview } from "../../../../redux/reducers/review";
+
 import "./book.css";
 
 
@@ -14,6 +13,8 @@ export default function Book({ currentBook }) {
 
   const handleClick = () => {
     dispatch(setSelect(false));
+    dispatch(setAddButton(false));
+    dispatch(setReview([]));
     if (!currentBook.isSelected) {
       dispatch(setAsin(currentBook.asin));
       dispatch(fetchReview(currentBook.asin));
