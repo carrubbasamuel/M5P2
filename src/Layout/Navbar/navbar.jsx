@@ -10,7 +10,7 @@ import Search from './Search/search.jsx';
 import './navbar.css';
 
 export default function Nav() {
-  const mode = useSelector((state) => state.root.modeRedux.mode);
+  const {mode} = useSelector((state) => state.root.modeRedux);
   const dispatch = useDispatch();
 
 

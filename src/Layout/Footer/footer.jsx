@@ -8,7 +8,7 @@ export default function Footer() {
             <Row>
             <Col className="text-center">
                 <p>
-                &copy; 2023 <a href="#">Carrubba Samuel</a>
+                &copy; 2023 Carrubba Samuel
                 </p>
             </Col>
             </Row>

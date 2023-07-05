@@ -1,13 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import DropGenre from './Components/DropGenre/dropgenre';
-import Foot from './Components/Footer/footer';
+import Home from './Pages/home';
 
-import { Provider } from 'react-redux';
-import CarouselBook from './Components/Carousel/carousel.jsx';
-import ListBook from './Components/ListBook/listbook';
-import Nav from './Components/Navbar/navbar';
-import store from './redux/store';
+
+
 
 
 
@@ -17,15 +14,12 @@ import store from './redux/store';
 function App() {
 
   return (
-    <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
 
-      <Nav />
-      <CarouselBook />
-      <DropGenre />
-      <ListBook/>
-      <Foot />
-    
-    </Provider>
   );
 }
 
