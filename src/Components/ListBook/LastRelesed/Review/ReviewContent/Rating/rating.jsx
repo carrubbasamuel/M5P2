@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setAddRate } from '../../../../../../redux/reducers/review';
 
 
 const Rating = ({ rate }) => {
+  const dispatch = useDispatch();
   const [rateing , setRateing] = useState(0);
+
+  useEffect(() => {
+    dispatch(setAddRate(rateing));
+  }, [rateing, dispatch]);
 
   return (
     <div>

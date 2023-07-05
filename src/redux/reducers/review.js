@@ -8,7 +8,7 @@ export const fetchReview = createAsyncThunk(
   async (asin) => {
     const response = await fetch(endpoint + asin, {
       headers: {
-        "Authorization": key
+        Authorization: key
       }
     });
 
@@ -22,27 +22,32 @@ export const fetchReview = createAsyncThunk(
 export const postReview = createAsyncThunk(
   'review/postReview',
   async (review) => {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      body: JSON.stringify(review),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": key
+    try {
+      console.log(review);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: JSON.stringify(review),
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: key
+        }
+      });
+      if (response.ok) {
+        console.log('Review added');
+        const data = await response.json();
+        return data;
       }
-    });
-
-    if (response.ok) {
-      console.log("Review added");
-      const data = await response.json();
-      return data;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
 
 const initialState = {
   reviewArray: [],
-  stateAddbutton: false,
-  loading: false
+  StateAddButton: false,
+  StateRating: 0,
+  Loading: false
 };
 
 const reviewSlice = createSlice({
@@ -53,25 +58,24 @@ const reviewSlice = createSlice({
       state.reviewArray = action.payload;
     },
     setAddButton: (state, action) => {
-      state.stateAddbutton = action.payload;
+      state.StateAddButton = action.payload;
     },
-    setAddReviewOpen: (state) => {
-      state.isAddReviewOpen = !state.isAddReviewOpen;
-      state.addRate = 0;
+    setAddRate: (state, action) => {
+      state.StateRating = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchReview.pending, (state) => {
-        state.loading = true;
+        state.Loading = true;
       })
       .addCase(fetchReview.fulfilled, (state, action) => {
-        state.loading = false;
-        state.reviewArray = action.payload || [];
-        state.stateAddbutton = true;
+        state.Loading = false;
+        state.reviewArray = action.payload.reverse() || [];
+        state.StateAddButton = true;
       })
       .addCase(fetchReview.rejected, (state, action) => {
-        state.loading = false;
+        state.Loading = false;
         console.log(action.error);
       });
   }
@@ -79,7 +83,7 @@ const reviewSlice = createSlice({
 
 export const {
   setReview,
-  setAddReviewOpen,
+  setModalOpen,
   setAddRate,
   setAddButton
 } = reviewSlice.actions;
