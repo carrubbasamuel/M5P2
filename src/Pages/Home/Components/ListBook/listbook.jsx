@@ -1,12 +1,12 @@
-import fantasy from '../../data/fantasy.json'
-import history from '../../data/history.json'
-import horror from '../../data/horror.json'
-import romance from '../../data/romance.json'
-import scifi from '../../data/scifi.json'
+import fantasy from '../../../../data/fantasy.json'
+import history from '../../../../data/history.json'
+import horror from '../../../../data/horror.json'
+import romance from '../../../../data/romance.json'
+import scifi from '../../../../data/scifi.json'
 
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setBookArray } from '../../redux/reducers/bookAction'
+import { setBookArray } from '../../../../redux/reducers/bookAction'
 import LastRelesed from './LastRelesed/lastreleased'
 
 

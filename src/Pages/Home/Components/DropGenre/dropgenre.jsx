@@ -1,6 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from '../../redux/reducers/bookAction';
+import { setCategory } from '../../../../redux/reducers/bookAction';
 import dropLink from './dropLink.json';
 import './dropgenre.css';
 

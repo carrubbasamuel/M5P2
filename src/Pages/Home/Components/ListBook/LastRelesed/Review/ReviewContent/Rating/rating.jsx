@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setAddRate } from '../../../../../../redux/reducers/review';
+import { setAddRate } from '../../../../../../../../redux/reducers/review';
 
 
 const Rating = ({ rate }) => {

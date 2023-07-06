@@ -6,7 +6,8 @@ const initialState = {
     bookGenre: "Choose a category",
     originalBookArray: [], // Aggiungi un campo per mantenere il valore originale dell'array
     asin: "",
-    StateHideCarousel: false
+    StateHideCarousel: false,
+    detailsBook: [],
 };
 
 const bookSlice = createSlice({
@@ -36,7 +37,10 @@ const bookSlice = createSlice({
             if (bookSelected) {
                 bookSelected.isSelected = action.payload;
             }
-        }
+        },
+        searchDetails: (state, action) => {
+            state.detailsBook = state.bookArray.find((book) => book.asin === action.payload);
+        },
     },
 });
 
@@ -48,7 +52,8 @@ export const {
     setBookArray,
     setSearch,
     setSelect,
-    setAsin
+    setAsin,
+    searchDetails,
 
 } = bookSlice.actions;
 

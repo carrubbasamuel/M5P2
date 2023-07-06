@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReview, postReview } from '../../../../../../../redux/reducers/review';
+import { fetchReview, postReview } from '../../../../../../../../../redux/reducers/review';
 import Rating from '../../Rating/rating';
 
 export default function FormAddReview({ show, handleClose }) {

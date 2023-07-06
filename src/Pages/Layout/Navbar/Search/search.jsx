@@ -3,10 +3,13 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { setSearch } from "../../../redux/reducers/bookAction";
+import { useLocation } from "react-router-dom";
+import { setSearch } from "../../../../redux/reducers/bookAction";
 
 
 export default function Search() {
+  const location = useLocation();
+  const isLocationHome = location.pathname === '/';
   const dispatch = useDispatch();
   const search = useRef();
 
@@ -15,6 +18,7 @@ export default function Search() {
   };
 
   return (
+    <div className={!isLocationHome ? "d-none" : "d-block"}>
     <InputGroup size="sm" className="p-5">
       <InputGroup.Text id="inputGroup-sizing-sx"><AiOutlineSearch /></InputGroup.Text>
       <Form.Control
@@ -24,5 +28,6 @@ export default function Search() {
         onKeyDown={handlerInput}
       />
     </InputGroup>
+    </div>
   );
 }

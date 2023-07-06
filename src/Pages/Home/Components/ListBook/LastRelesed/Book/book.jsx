@@ -1,7 +1,9 @@
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { setAsin, setSelect } from "../../../../redux/reducers/bookAction";
-import { fetchReview, setAddButton, setReview } from "../../../../redux/reducers/review";
+import { Link } from "react-router-dom";
+import { searchDetails, setAsin, setSelect } from "../../../../../../redux/reducers/bookAction";
+import { fetchReview, setAddButton, setReview } from "../../../../../../redux/reducers/review";
 
 import "./book.css";
 
@@ -22,6 +24,10 @@ export default function Book({ currentBook }) {
     }
   };
 
+  const handleDetails = () => {
+    dispatch(searchDetails(currentBook.asin));
+  };
+
 
   return (
     <Card className={`col-3 ${currentBook.isSelected ? "select" : "noselect"}`}>
@@ -31,6 +37,9 @@ export default function Book({ currentBook }) {
         <Card.Text>Category: {currentBook.category}</Card.Text>
         <Card.Text>{currentBook.price} $</Card.Text>
       </Card.Body>
+      <Card.Footer className={mode === 'light' ? "bianco" : "nero"}>
+        <Button variant="primary" onClick={handleDetails}><Link to={`/book/${currentBook.asin}`}>Clicca!</Link></Button>
+    </Card.Footer>
     </Card>
   );
 }
