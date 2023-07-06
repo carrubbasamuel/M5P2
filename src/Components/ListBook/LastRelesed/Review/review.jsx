@@ -11,13 +11,14 @@ import './review.css';
 
 export default function Review() {
     const { reviewArray, Loading, StateAddButton } = useSelector((state) => state.root.review);
+    const mode = useSelector((state) => state.root.modeRedux.mode);
 
 
 
 
     return (
         <aside className='col-5 d-flex flex-column justify-content-center align-items-center'>
-            <div className='boxReview mb-5'>
+            <div className={`boxReview mb-5 ${mode === 'light' ? "text-dark" : "text-light"}`}>
                 {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
                 <div className={`d-flex flex-column justify-content-center align-items-center mt-5 pt-5 ${reviewArray.length > 0 || Loading === true || StateAddButton === true ? "d-none" : "d-block"}`}>
                     <TbHandClick className='fs-2 mb-4' />

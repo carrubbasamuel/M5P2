@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import { useSelector } from 'react-redux';
 import FormAddReview from './FormAddReview/formaddreview';
 
 export default function AddReview() {
@@ -8,11 +9,13 @@ export default function AddReview() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const mode = useSelector((state) => state.root.modeRedux.mode);
+
 
 
   return (
     <>
-      <Button variant="outline-secondary" onClick={handleShow}>
+      <Button variant={mode === 'light' ? "outline-dark" : "outline-light"} onClick={handleShow}>
         Add Review
       </Button>
 
