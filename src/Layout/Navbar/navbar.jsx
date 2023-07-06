@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { BsFillSunFill } from 'react-icons/bs';
@@ -10,20 +11,31 @@ import Search from './Search/search.jsx';
 import './navbar.css';
 
 export default function Nav() {
+  const[scroll, setScroll] = useState(false);
+
+
   const {mode} = useSelector((state) => state.root.modeRedux);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 100){
+        setScroll(true);
+      }else{
+        setScroll(false);
+      }
+    })
+  },[]);
+
 
   return (
-    <Navbar className={`shadow ${mode === 'light' ? "bg-light" : "bg-dark"}`}>
+    <Navbar className={`shadow fixed-top ${mode === 'light' ? "bg-light" : "bg-dark"} ${scroll === true ? "isScroll" : ""}`}>
       <Container>
         <Navbar.Brand href="#home">
           <img id='logo' src={mode === 'light' ? logo : logoDark} alt="" />
         </Navbar.Brand>
 
         <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}>Home</Navbar.Text>
-        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}>Best Seles</Navbar.Text>
-        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}>Join With Us</Navbar.Text>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Search />

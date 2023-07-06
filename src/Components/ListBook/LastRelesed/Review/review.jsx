@@ -10,34 +10,34 @@ import ReviewContent from './ReviewContent/reviewcontent';
 import './review.css';
 
 export default function Review() {
-    const {reviewArray, Loading, StateAddButton} = useSelector((state) => state.root.review);
+    const { reviewArray, Loading, StateAddButton } = useSelector((state) => state.root.review);
 
-    
-    
+
+
 
     return (
-        <aside className='col-4 d-flex flex-column justify-content-center align-items-center'>
+        <aside className='col-5 d-flex flex-column justify-content-center align-items-center'>
             <div className='boxReview mb-5'>
                 {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
-                <div className={`d-flex flex-column justify-content-center align-items-center mt-5 pt-5 ${reviewArray.length > 0 || Loading === true || StateAddButton ===true ? "d-none" : "d-block"}`}>
+                <div className={`d-flex flex-column justify-content-center align-items-center mt-5 pt-5 ${reviewArray.length > 0 || Loading === true || StateAddButton === true ? "d-none" : "d-block"}`}>
                     <TbHandClick className='fs-2 mb-4' />
                     <p>Click into any book to see, or add, reviws...</p>
                 </div>
-                <div className='mt-5 '>
-                    {reviewArray.length === 0 && StateAddButton === true && Loading === false ? 
-                    <div className="d-flex flex-column justify-content-center align-items-center">
-                        <BsEmojiExpressionless className="fs-1 mb-3" />
-                        <p className="fs-4">No reviews yet</p>
-                        <p className="fs-6">Be the first to review this book!</p>
+                <div className='mt-5 pt-5 '>
+                    {reviewArray.length === 0 && StateAddButton === true && Loading === false ?
+                        <div className="d-flex flex-column justify-content-center align-items-center">
+                            <BsEmojiExpressionless className="fs-1 mb-3" />
+                            <p className="fs-4">No reviews yet</p>
+                            <p className="fs-6">Be the first to review this book!</p>
                         </div> : null}
-                    { Loading === false && reviewArray && reviewArray.map((review, index) => (
+                    {Loading === false && reviewArray && reviewArray.map((review, index) => (
                         <div key={index}>
                             <ReviewContent review={review} />
                         </div>
                     ))}
                 </div>
             </div>
-            {Loading === false && StateAddButton === true ? <AddReview/> : null}
+            {Loading === false && StateAddButton === true ? <AddReview /> : null}
 
         </aside>
     );

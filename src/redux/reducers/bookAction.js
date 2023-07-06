@@ -6,6 +6,7 @@ const initialState = {
     bookGenre: "Choose a category",
     originalBookArray: [], // Aggiungi un campo per mantenere il valore originale dell'array
     asin: "",
+    StateHideCarousel: false
 };
 
 const bookSlice = createSlice({
@@ -24,6 +25,7 @@ const bookSlice = createSlice({
         },
         setSearch: (state, action) => {
             const searchQuery = action.payload;
+            searchQuery === "" ? state.StateHideCarousel = false : state.StateHideCarousel = true;
             state.bookArray = state.originalBookArray.filter((book) => {
                 return book.title.toLowerCase().includes(searchQuery);
             });

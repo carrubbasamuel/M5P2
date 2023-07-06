@@ -21,7 +21,7 @@
 
 .dropdown-item{
     padding: 10px 20px;
-    border-radius: 25px;
+    --bs-dropdown-link-active-bg: black!important;
     text-align: center;
 }
 

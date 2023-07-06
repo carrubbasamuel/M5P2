@@ -35,8 +35,8 @@ export default function LastRelesed() {
   return (
     <div className={mode === 'light' ? "bg-light" : "bg-dark"}>
       <div className="row">
-        <div className="col-8">
-          <div className="row justify-content-center align-items-start p-5">
+        <div className="col-7">
+          <div className="row justify-content-center align-items-start">
             {bookArray.length > 0 ? bookArray.map((book, index) => (
               <Book key={index} currentBook={book} />
             ))

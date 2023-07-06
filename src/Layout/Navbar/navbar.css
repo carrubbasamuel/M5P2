@@ -1,5 +1,5 @@
 #logo{
-    width: 250px;
+    width: 200px;
 }
 
 
@@ -23,15 +23,35 @@ button.light{
 .modeState{
     cursor: pointer;
     position: relative;
-    text-align: center;
     padding: 20px;
     border-radius: 50%;
     box-shadow: 0 0 5px #000;
 }
 
+@keyframes pop{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
 .modeState svg{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 32%;
+    
+    
+    animation: pop 0.5s forwards;
+}
+
+nav{
+    transition: all 0.3s ease-in-out;
+    height: 150px;
+    background-color: #000;
+}
+nav.isScroll{
+    height: 70px;
+    background-color: white;
 }
