@@ -1,13 +1,7 @@
-import fantasy from '../../../../data/fantasy.json'
-import history from '../../../../data/history.json'
-import horror from '../../../../data/horror.json'
-import romance from '../../../../data/romance.json'
-import scifi from '../../../../data/scifi.json'
 
-
-import { useDispatch, useSelector } from 'react-redux'
-import { setBookArray } from '../../../../redux/reducers/bookAction'
-import LastRelesed from './LastRelesed/lastreleased'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBooks } from '../../../../redux/reducers/bookAction';
+import LastRelesed from './LastRelesed/lastreleased';
 
 
 export default function ListBook() {
@@ -17,22 +11,22 @@ export default function ListBook() {
 
   switch (category) {
     case 'fantasy':
-      dispatch(setBookArray(fantasy));
+      dispatch(fetchBooks(category));
       break;
     case 'horror':
-      dispatch(setBookArray(horror));
+      dispatch(fetchBooks(category));
       break;
     case 'history':
-      dispatch(setBookArray(history));
+      dispatch(fetchBooks(category));
       break;
     case 'romance':
-      dispatch(setBookArray(romance));
+      dispatch(fetchBooks(category));
       break;
     case 'scifi':
-      dispatch(setBookArray(scifi));
+      dispatch(fetchBooks(category));
       break;
     default:
-      dispatch(setBookArray(fantasy));
+      dispatch(fetchBooks(category));
       break;
   }
 

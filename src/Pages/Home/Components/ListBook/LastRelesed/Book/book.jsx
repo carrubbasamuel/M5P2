@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import { TbListDetails } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { searchDetails, setAsin, setSelect } from "../../../../../../redux/reducers/bookAction";
+import { setBookDeteil, setAsin, setSelect } from "../../../../../../redux/reducers/bookAction";
 import { fetchReview, setAddButton, setReview } from "../../../../../../redux/reducers/review";
 
 import "./book.css";
@@ -26,7 +26,7 @@ export default function Book({ currentBook }) {
   };
 
   const handleDetails = () => {
-    dispatch(searchDetails(currentBook.asin));
+    dispatch(setBookDeteil(currentBook.asin));
   };
 
 

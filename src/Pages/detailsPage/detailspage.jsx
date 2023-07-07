@@ -10,7 +10,7 @@ export default function DetailsPage() {
     const dispatch = useDispatch()
     const mode = useSelector(state => state.root.modeRedux.mode)
 
-    const book = useSelector(state => state.root.book.detailsBook);
+    const book = useSelector(state => state.root.book.BookDeteil);
 
     useEffect(() => {
         window.scrollTo(0, 0)

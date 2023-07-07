@@ -18,9 +18,5 @@
     {
         "eventKey": "history",
         "title": "History"
-    },
-    {
-        "eventKey": "Choose a category",
-        "title": "Choose a category"
     }
 ]
