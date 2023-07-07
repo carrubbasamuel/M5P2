@@ -27,7 +27,7 @@ export default function Edit() {
         setTimeout(() => {
             dispatch(updateReview(newReview)).then(() => dispatch(fetchReview(asin)));
             setAnimationPlaying(false);
-        }, 5000);
+        }, 4000);
     };
 
     const handleEscape = () => {

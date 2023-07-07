@@ -37,8 +37,8 @@ export default function Nav() {
           <img id='logo' src={mode === 'light' ? logo : logoDark} alt="" />
         </Navbar.Brand>
 
-        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}><Link href="" to="/">Home</Link></Navbar.Text>
-        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}><Link href="" to="/book/404notfound">Contact Us</Link></Navbar.Text>
+        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}><Link href="#" to="/">Home</Link></Navbar.Text>
+        <Navbar.Text className={mode === 'light' ? "text-dark" : "text-light"}><Link href="#" to="/book/404notfound">Contact Us</Link></Navbar.Text>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Search />
