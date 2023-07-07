@@ -30,8 +30,13 @@ export default function Edit() {
         }, 5000);
     };
 
+    const handleEscape = () => {
+        dispatch(fetchReview(asin));
+    };
+
     return (
         <div className="d-flex flex-column justify-content-center align-items-center">
+            <Button onClick={handleEscape} variant="outline-danger" className="mb-3 align-self-end">X</Button>
             <textarea ref={text} className="form-control" id="exampleFormControlTextarea1" rows="3">
                 {review.comment}
             </textarea>

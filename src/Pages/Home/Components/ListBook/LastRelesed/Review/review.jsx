@@ -20,6 +20,7 @@ export default function Review() {
     
     return (
         <aside className={`d-flex flex-column justify-content-center align-items-center ${isLocationHome ? "col-5" : ""}`}>
+             {Loading === false && StateAddButton === true ? <AddReview /> : null}
             <div className={`boxReview mb-5 ${mode === 'light' ? "text-dark" : "text-light"}`}>
                 {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
                 <div className={isLocationHome ? "d-block" : "d-none"}>
@@ -44,7 +45,7 @@ export default function Review() {
                     ))}
                 </div>
             </div>
-            {Loading === false && StateAddButton === true ? <AddReview /> : null}
+           
 
         </aside>
     );

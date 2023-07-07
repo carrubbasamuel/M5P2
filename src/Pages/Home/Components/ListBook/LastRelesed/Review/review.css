@@ -1,5 +1,5 @@
 aside{
-    height: 500px;
+    height: 600px;
     position: -webkit-sticky;
     position: sticky;
     top: 100px;
@@ -11,7 +11,7 @@ div.boxReview{
     height: 100%;
     border-radius: 10px;
     padding: 50px;
-    margin-bottom: 10px;
+    margin-top: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
