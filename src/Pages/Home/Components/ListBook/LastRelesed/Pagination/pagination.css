@@ -1,0 +1,22 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a{
+    color: #000;
+}
+
+.pagination a:hover{
+    color: #fff;
+    background-color: #000;
+}
+
+.pagination .active{
+    color: #fff;
+    --bs-pagination-active-bg: black;
+    --bs-pagination-focus-color: black;
+    --bs-pagination-active-border-color: black;
+}

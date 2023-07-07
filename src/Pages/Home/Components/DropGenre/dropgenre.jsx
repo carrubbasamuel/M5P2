@@ -1,6 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from '../../../../redux/reducers/bookAction';
+import { setCategory, setCurrentPage } from '../../../../redux/reducers/bookAction';
 import { setAddButton, setReview } from '../../../../redux/reducers/review';
 import dropLink from './dropLink.json';
 import './dropgenre.css';
@@ -14,11 +14,12 @@ export default function Header() {
     dispatch(setCategory(e));
     dispatch(setReview([]));
     dispatch(setAddButton(false));
+    dispatch(setCurrentPage(1));
   };
   
 
   return (
-    <Dropdown drop={"down-centered"} onSelect={handleSelect} className={`d-flex justify-content-center mt-5 p-5 ${mode === 'dark' ? "bg-dark" : "bg-light"}`}>
+    <Dropdown id="books" drop={"down-centered"} onSelect={handleSelect} className={`d-flex justify-content-center mt-5 p-5 ${mode === 'dark' ? "bg-dark" : "bg-light"}`}>
       <Dropdown.Toggle id="dropdown-basic" className={mode === 'dark' ? "light" : "dark"}>
         {category.charAt(0).toUpperCase() + category.slice(1)}
       </Dropdown.Toggle>

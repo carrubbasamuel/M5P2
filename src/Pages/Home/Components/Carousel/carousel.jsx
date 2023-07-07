@@ -5,10 +5,10 @@ import carouselItem from './carousel.json';
 
 
 export default function CarouselBook() {
-  const { StateHideCarousel } = useSelector((state) => state.root.book);
+  const { isSearchMode } = useSelector((state) => state.root.book);
 
   return (
-    <Carousel fade className={StateHideCarousel === true ? "hidecarousel" : "showcarousel"} >
+    <Carousel fade className={isSearchMode === true ? "hidecarousel" : "showcarousel"} >
         {carouselItem.map((item, index) => {
             return (
                 <Carousel.Item key={index}>

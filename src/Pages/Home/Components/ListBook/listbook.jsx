@@ -1,6 +1,6 @@
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBooks } from '../../../../redux/reducers/bookAction';
+import { fetchBooks, setCurrentPage } from '../../../../redux/reducers/bookAction';
 import LastRelesed from './LastRelesed/lastreleased';
 
 
@@ -11,22 +11,22 @@ export default function ListBook() {
 
   switch (category) {
     case 'fantasy':
-      dispatch(fetchBooks(category));
+      dispatch(fetchBooks(category)).then(()=> dispatch(setCurrentPage(1)));
       break;
     case 'horror':
-      dispatch(fetchBooks(category));
+      dispatch(fetchBooks(category)).then(()=> dispatch(setCurrentPage(1)));
       break;
     case 'history':
-      dispatch(fetchBooks(category));
+      dispatch(fetchBooks(category)).then(()=> dispatch(setCurrentPage(1)));
       break;
     case 'romance':
-      dispatch(fetchBooks(category));
+      dispatch(fetchBooks(category)).then(()=> dispatch(setCurrentPage(1)));
       break;
     case 'scifi':
-      dispatch(fetchBooks(category));
+      dispatch(fetchBooks(category)).then(()=> dispatch(setCurrentPage(1)));
       break;
     default:
-      dispatch(fetchBooks(category));
+      dispatch(fetchBooks(category)).then(()=> dispatch(setCurrentPage(1)));
       break;
   }
 

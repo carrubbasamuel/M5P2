@@ -20,14 +20,14 @@ export default function DetailsPage() {
     return (
         <Layout>
         <main className={`row box ${mode === 'light' ? 'text-dark': 'text-light'}`}>
-          <div className="col-4">
-            <img className="img-fluid" src={book.img} alt="" />
+          <div className="col-5">
+            <img width={200} className="img-fluid" src={book.img} alt="" />
           </div>
           <div className="col-5">
             <div className="d-flex flex-column ">
-              <p className="fs-3 text-end pt-4">{book.title}</p>
-              <p className="fs-3 text-end pt-4">Category: <span className="text-success">{book.category}</span></p>
-              <p className="fs-1 text-end pt-4">{book.price} €</p>
+              <h1 className="fs-1 text-center pt-4">{book.title}</h1>
+              <p className="fs-3 text-center pt-4">Category: <span className="text-success">{book.category}</span></p>
+              <p className="fs-1 text-center pt-4 mb-4">{book.price} €</p>
               <Review />
             </div>
           </div>

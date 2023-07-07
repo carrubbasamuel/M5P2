@@ -17,12 +17,12 @@ export default function Review() {
     const { reviewArray, Loading, StateAddButton } = useSelector((state) => state.root.review);
     const mode = useSelector((state) => state.root.modeRedux.mode);
 
-    
+
     return (
         <aside className={`d-flex flex-column justify-content-center align-items-center ${isLocationHome ? "col-5" : ""}`}>
-             {Loading === false && StateAddButton === true ? 
-             <AddReview /> :
-              null}
+            {Loading === false && StateAddButton === true ?
+                <AddReview /> :
+                null}
             <div className={`boxReview mb-5 ${mode === 'light' ? "text-dark" : "text-light"}`}>
                 {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
                 <div className={isLocationHome ? "d-block" : "d-none"}>
@@ -40,17 +40,17 @@ export default function Review() {
                             <BsEmojiExpressionless className="fs-1 mb-3" />
                             <p className="fs-4">No reviews yet</p>
                             <p className="fs-6">Be the first to review this book!</p>
-                        </div> 
-                    
-                    : null}
+                        </div>
 
-                    
+                        : null}
+
+
                     {Loading === false && reviewArray && reviewArray.map((review) => (
-                        <ReviewContent  key={review._id} review={review} />
+                        <ReviewContent key={review._id} review={review} />
                     ))}
                 </div>
             </div>
-           
+
 
         </aside>
     );

@@ -37,10 +37,10 @@ export default function FormAddReview({ show, handleClose }) {
                 
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="ouline-secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={handleSave}>
+                <Button variant="outline-success" onClick={handleSave}>
                     Save Changes
                 </Button>
             </Modal.Footer>
