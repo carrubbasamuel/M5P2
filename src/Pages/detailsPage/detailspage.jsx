@@ -27,7 +27,7 @@ export default function DetailsPage() {
             <div className="d-flex flex-column ">
               <p className="fs-1 pt-4">{book.title}</p>
               <p className="fs-3 pt-4">Category: <span className="text-success">{book.category}</span></p>
-              <p className="fs-1 pt-4 mb-4">{book.price} €</p>
+              <p className="fs-1 pt-4 mb-4">Price: {book.price} €</p>
               <Review />
             </div>
           </div>

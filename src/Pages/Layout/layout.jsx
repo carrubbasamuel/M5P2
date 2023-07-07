@@ -9,7 +9,7 @@ export default function Layout({ children }) {
         <div className={mode === 'light' ? 'bg-light' : 'bg-dark'}>
             <Nav />
 
-            {children} {/* this is the place where the content of the page will be rendered */}
+            {children} {/* Qui verranno inseriti i componenti principali delle pagine */}
 
             <Footer />
         </div>

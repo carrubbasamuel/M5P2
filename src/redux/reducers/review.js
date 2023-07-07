@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const endpoint = `https://striveschool-api.herokuapp.com/api/comments/`
-const key = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDdlM2MxNmI5YzBmNzAwMTQ0ODRlZDgiLCJpYXQiOjE2ODc1NDI0MzEsImV4cCI6MTY4ODc1MjAzMX0.d6MQUWUpdusXGvNd72LzIvVPzs6OxCfRXI1iQkTjhy8"
+const endpoint = `https://striveschool-api.herokuapp.com/api/comments/`;
+const key = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDdlM2MxNmI5YzBmNzAwMTQ0ODRlZDgiLCJpYXQiOjE2ODc1NDI0MzEsImV4cCI6MTY4ODc1MjAzMX0.d6MQUWUpdusXGvNd72LzIvVPzs6OxCfRXI1iQkTjhy8";
 
-
-//GET
+// Funzione asincrona per ottenere i commenti
 export const fetchReview = createAsyncThunk(
   'review/fetchReview',
   async (asin) => {
@@ -21,7 +20,7 @@ export const fetchReview = createAsyncThunk(
   }
 );
 
-//POST
+// Funzione asincrona per inviare un commento
 export const postReview = createAsyncThunk(
   'review/postReview',
   async (review) => {
@@ -46,8 +45,7 @@ export const postReview = createAsyncThunk(
   }
 );
 
-
-//DELATE
+// Funzione asincrona per eliminare un commento
 export const deleteReview = createAsyncThunk(
   'review/deleteReview',
   async (id, { getState }) => {
@@ -73,7 +71,7 @@ export const deleteReview = createAsyncThunk(
   }
 );
 
-//PUT
+// Funzione asincrona per aggiornare un commento
 export const updateReview = createAsyncThunk(
   'review/updateReview',
   async (review) => {
@@ -97,53 +95,58 @@ export const updateReview = createAsyncThunk(
   }
 );
 
-
-
-
+// Stato iniziale per il modulo review
 const initialState = {
-  reviewArray: [],
-  StateAddButton: false,
-  StateRating: 0,
-  Loading: false,
-  CurrentReview: {},
+  reviewArray: [], // Array dei commenti
+  StateAddButton: false, // Stato del pulsante per aggiungere un commento
+  StateRating: 0, // Stato del rating
+  Loading: false, // Stato di caricamento
+  CurrentReview: {}, // Commento corrente
 };
 
+// Slice per il modulo review
 const reviewSlice = createSlice({
   name: "review",
   initialState,
   reducers: {
     setReview: (state, action) => {
+      // Imposta l'array dei commenti
       state.reviewArray = action.payload;
     },
     setAddButton: (state, action) => {
+      // Imposta lo stato del pulsante per aggiungere un commento
       state.StateAddButton = action.payload;
     },
     setAddRate: (state, action) => {
+      // Imposta lo stato del rating
       state.StateRating = action.payload;
     },
     setEditMode: (state, action) => {
+      // Imposta la modalità di modifica per un commento
       const { id, editMode } = action.payload;
       const index = state.reviewArray.findIndex((review) => review._id === id);
-      if(state.reviewArray[index].editMode === editMode) {
+      if (state.reviewArray[index].editMode === editMode) {
         state.reviewArray[index].editMode = !editMode;
-      } else{
+      } else {
         state.reviewArray[index].editMode = editMode;
       }
       state.CurrentReview = state.reviewArray[index];
-      
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchReview.pending, (state) => {
+        // Stato di caricamento durante la richiesta
         state.Loading = true;
       })
       .addCase(fetchReview.fulfilled, (state, action) => {
+        // Aggiorna lo stato con i commenti ottenuti
         state.Loading = false;
         state.reviewArray = action.payload.reverse() || [];
         state.StateAddButton = true;
       })
       .addCase(fetchReview.rejected, (state, action) => {
+        // Stato di errore durante la richiesta
         state.Loading = false;
         console.log(action.error);
       });
@@ -152,12 +155,9 @@ const reviewSlice = createSlice({
 
 export const {
   setReview,
-  setModalOpen,
-  setAddRate,
   setAddButton,
+  setAddRate,
   setEditMode
 } = reviewSlice.actions;
 
 export default reviewSlice.reducer;
-
-

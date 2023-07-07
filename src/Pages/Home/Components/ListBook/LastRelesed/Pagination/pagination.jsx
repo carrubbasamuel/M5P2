@@ -10,12 +10,11 @@ const BookPagination = () => {
   const totalPages = useSelector((state) => state.root.book.totalPages);
 
   const handlePageChange = (page) => {
-    dispatch(setCurrentPage(page));
+    dispatch(setCurrentPage(page)); // Imposta la pagina corrente nel redux store
   };
 
   return (
     <Pagination className='pagination'>
-      
       {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
         <Pagination.Item
           key={page}
@@ -26,7 +25,6 @@ const BookPagination = () => {
           {page}
         </Pagination.Item>
       ))}
-      
     </Pagination>
   );
 };

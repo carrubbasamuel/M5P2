@@ -11,39 +11,58 @@ import { setMode } from '../../../redux/reducers/ModeState';
 import Search from './Search/search.jsx';
 import './navbar.css';
 
-
 export default function Nav() {
-  const[scroll, setScroll] = useState(false);
-  
+  const [scroll, setScroll] = useState(false);
 
-  const {mode} = useSelector((state) => state.root.modeRedux);
+  const { mode } = useSelector((state) => state.root.modeRedux);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Aggiungi un listener per l'evento di scroll della finestra
     window.addEventListener('scroll', () => {
-      if(window.scrollY > 100){
-        setScroll(true);
-      }else{
-        setScroll(false);
+      if (window.scrollY > 100) {
+        setScroll(true); // Se lo scroll supera i 100 pixel, imposta lo stato scroll a true
+      } else {
+        setScroll(false); // Altrimenti, imposta lo stato scroll a false
       }
-    })
-  },[]);
+    });
 
+    // Rimuovi il listener quando il componente viene smontato
+    return () => {
+      window.removeEventListener('scroll', () => {});
+    };
+  }, []);
 
   return (
-    <Navbar className={`shadow fixed-top ${mode === 'light' ? "bg-light" : "bg-dark"} ${scroll === true ? "isScroll" : ""}`}>
+    <Navbar
+      className={`shadow fixed-top ${mode === 'light' ? 'bg-light' : 'bg-dark'} ${
+        scroll === true ? 'isScroll' : ''
+      }`}
+    >
       <Container>
         <Navbar.Brand href="#home">
-          <img id='logo' src={mode === 'light' ? logo : logoDark} alt="" />
+          <img id="logo" src={mode === 'light' ? logo : logoDark} alt="" />
         </Navbar.Brand>
-
-        <Navbar.Text><Link href="#" to="/"  className={mode === 'light' ? "text-dark" : "text-light"}>Home</Link></Navbar.Text>
-        <Navbar.Text><Link href="#" to="/book/404notfound" className={mode === 'light' ? "text-dark" : "text-light"}>Contact Us</Link></Navbar.Text>
-        <Navbar.Toggle />
+        <Navbar.Text>
+          <Link to="/" className={mode === 'light' ? 'text-dark' : 'text-light'}>
+            Home
+          </Link>
+        </Navbar.Text>
+        <Navbar.Text>
+          <Link
+            to="/book/404notfound"
+            className={mode === 'light' ? 'text-dark' : 'text-light'}
+          >
+            Contact Us
+          </Link>
+        </Navbar.Text>
         <Navbar.Collapse className="justify-content-end">
           <Search />
         </Navbar.Collapse>
-        <div onClick={() => dispatch(setMode())} className={mode === 'light' ? "modeState text-dark" : "modeState text-light"}>
+        <div
+          onClick={() => dispatch(setMode())}
+          className={mode === 'light' ? 'modeState text-dark' : 'modeState text-light'}
+        >
           {mode === 'light' ? <RiMoonFill /> : <BsFillSunFill />}
         </div>
       </Container>
