@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const endpoint = `https://striveschool-api.herokuapp.com/api/comments/`;
-const key = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDdlM2MxNmI5YzBmNzAwMTQ0ODRlZDgiLCJpYXQiOjE2ODc1NDI0MzEsImV4cCI6MTY4ODc1MjAzMX0.d6MQUWUpdusXGvNd72LzIvVPzs6OxCfRXI1iQkTjhy8";
+const key = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDdlM2MxNmI5YzBmNzAwMTQ0ODRlZDgiLCJpYXQiOjE2ODg3NTI5NDYsImV4cCI6MTY4OTk2MjU0Nn0.MoSR2wOlV_FtA4bPLcsBZJoWiFj4DkFDtjJHwgyV2Dk";
 
 // Funzione asincrona per ottenere i commenti
 export const fetchReview = createAsyncThunk(
