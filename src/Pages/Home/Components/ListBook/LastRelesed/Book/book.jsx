@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { TbListDetails } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchDetails, setAsin, setSelect } from "../../../../../../redux/reducers/bookAction";
@@ -35,10 +36,10 @@ export default function Book({ currentBook }) {
       <Card.Body className={mode === 'light' ? "bianco" : "nero"}>
         <Card.Title className="">{currentBook.title}</Card.Title>
         <Card.Text>Category: {currentBook.category}</Card.Text>
-        <Card.Text>{currentBook.price} $</Card.Text>
+        <Card.Text>{currentBook.price}  €</Card.Text>
       </Card.Body>
       <Card.Footer className={mode === 'light' ? "bianco" : "nero"}>
-        <Button variant="primary" onClick={handleDetails}><Link to={`/book/${currentBook.asin}`}>Clicca!</Link></Button>
+        <Link to={`/book/${currentBook.asin}`}><Button variant="outline-secondary" onClick={handleDetails}><TbListDetails/></Button></Link>
     </Card.Footer>
     </Card>
   );

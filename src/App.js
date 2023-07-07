@@ -1,9 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+
+
+import DetailsPage from './Pages/DetailsPage/detailspage';
 import Error404 from './Pages/ErrorPage/404error';
 import Home from './Pages/Home/home';
-import DetailsPage from './Pages/detailsPage/detailspage';
 
 
 

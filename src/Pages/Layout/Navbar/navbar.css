@@ -41,8 +41,6 @@ button.light{
     position: absolute;
     top: 30%;
     left: 32%;
-    
-    
     animation: pop 0.5s forwards;
 }
 

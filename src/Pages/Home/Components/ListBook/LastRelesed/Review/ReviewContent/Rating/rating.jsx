@@ -3,29 +3,40 @@ import { useDispatch } from 'react-redux';
 import { setAddRate } from '../../../../../../../../redux/reducers/review';
 
 
-const Rating = ({ rate }) => {
+const Rating = ({ review }) => {
   const dispatch = useDispatch();
-  const [rateing , setRateing] = useState(0);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    dispatch(setAddRate(rateing));
-  }, [rateing, dispatch]);
+    dispatch(setAddRate(rating));
+  }, [rating, dispatch]);
+
+  let isSelected;
+
+  if (!review) {
+    isSelected = rating;
+  } else if (review.editMode === true) {
+    isSelected = rating;
+  } else {
+    isSelected = review.rate;
+  }
 
   return (
     <div>
-      <div>
+      <div className={review && review.editMode ? "fs-2" : ""}>
         {[1, 2, 3, 4, 5].map((value) => (
           <Star
             key={value}
             value={value}
-            isSelected={value <= rate || value <= rateing}
-            handleClick={() => setRateing(value)}
+            isSelected={value <= isSelected}
+            handleClick={() => setRating(value)}
           />
         ))}
       </div>
     </div>
   );
 };
+
 
 const Star = ({ isSelected, handleClick }) => {
   return (
