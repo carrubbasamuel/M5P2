@@ -1,6 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../../../../redux/reducers/bookAction';
+import { setAddButton, setReview } from '../../../../redux/reducers/review';
 import dropLink from './dropLink.json';
 import './dropgenre.css';
 
@@ -11,6 +12,8 @@ export default function Header() {
 
   const handleSelect = (e) => {
     dispatch(setCategory(e));
+    dispatch(setReview([]));
+    dispatch(setAddButton(false));
   };
   
 
