@@ -23,7 +23,7 @@ export default function Review() {
             {Loading === false && StateAddButton === true ?
                 <AddReview /> :
                 null}
-            <div className={`boxReview mb-5 ${mode === 'light' ? "text-dark" : "text-light"}`}>
+            <div className={`boxReview mb-5 ${mode === 'light' ? "dark" : "light"}`}>
                 {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
                 <div className={isLocationHome ? "d-block" : "d-none"}>
                     <div className={`d-flex flex-column justify-content-center align-items-center mt-5 pt-5 ${reviewArray.length > 0 || Loading === true || StateAddButton === true ? "d-none" : "d-block"}`}>

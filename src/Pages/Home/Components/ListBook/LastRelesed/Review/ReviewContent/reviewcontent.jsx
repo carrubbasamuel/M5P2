@@ -11,6 +11,7 @@ import './reviewcontent.css';
 export default function ReviewContent({ review }) {
     const dispatch = useDispatch();
     const asin = useSelector((state) => state.root.book.asin);
+    const mode = useSelector((state) => state.root.modeRedux.mode);
 
     const [formattedDate, setFormattedDate] = useState('');
 
@@ -32,7 +33,7 @@ export default function ReviewContent({ review }) {
 
 
     return (
-        <div className='box-review'>
+        <div className={mode === 'light' ? "box-review light" : "box-review dark"}>
             {review.editMode === true ?
                 <Edit />
                 :
@@ -40,7 +41,7 @@ export default function ReviewContent({ review }) {
                     <p>{review.comment}</p>
                     <div className='d-flex justify-content-between'>
                         <Rating review={review} />
-                        <p className="ms-5 text-muted">{review.author}</p>
+                        <p className={mode === 'light' ? "text-muted ms-4": "text-light ms-4"}>{review.author}</p>
                     </div>
                     <hr />
                     <div className='d-flex justify-content-between'>
