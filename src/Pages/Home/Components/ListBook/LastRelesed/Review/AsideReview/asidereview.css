@@ -1,7 +1,8 @@
 aside{
     height: 600px;
     position: -webkit-sticky;
-    position: sticky;
+    position: sticky!important;
+   
     top: 100px;
 }
 

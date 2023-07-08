@@ -33,7 +33,7 @@ export default function ReviewContent({ review }) {
 
 
     return (
-        <div className={mode === 'light' ? "box-review light" : "box-review dark"}>
+        <div className={`box-review ${mode === 'light' ? "light" : "dark"}`}>
             {review.editMode === true ?
                 <Edit />
                 :
@@ -41,7 +41,7 @@ export default function ReviewContent({ review }) {
                     <p>{review.comment}</p>
                     <div className='d-flex justify-content-between'>
                         <Rating review={review} />
-                        <p className={mode === 'light' ? "text-muted ms-4": "text-light ms-4"}>{review.author}</p>
+                        <p className={mode === 'light' ? "text-muted ms-4 author": "text-light ms-4 author"}>{review.author}</p>
                     </div>
                     <hr />
                     <div className='d-flex justify-content-between'>

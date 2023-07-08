@@ -2,7 +2,6 @@
     width: 200px;
 }
 
-
 span.navbar-text:not(:first-child){
     margin: 0 20px;
 }
@@ -23,7 +22,7 @@ button.light{
 .modeState{
     cursor: pointer;
     position: relative;
-    padding: 20px;
+    padding: 18px;
     border-radius: 50%;
     box-shadow: 0 0 5px #000;
 }
@@ -48,8 +47,14 @@ nav{
     transition: all 0.3s ease-in-out;
     height: 150px;
     background-color: #000;
+    overflow: hidden;
 }
 nav.isScroll{
-    height: 70px;
+    height: 80px;
     background-color: white;
 }
+.notover{
+    margin: 0;
+}
+
+

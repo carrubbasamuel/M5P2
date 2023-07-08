@@ -15,8 +15,16 @@
 }
 
 #dropdown-basic{
+    z-index: 1000;
     padding: 10px 50px;
     border-radius: 25px;
+}
+
+#books{
+    padding: 10px 20px;
+    --bs-dropdown-link-active-bg: black!important;
+    text-align: center;
+    overflow: visible!important;
 }
 
 .dropdown-item{

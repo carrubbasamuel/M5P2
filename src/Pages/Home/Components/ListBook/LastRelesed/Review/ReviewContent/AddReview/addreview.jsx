@@ -15,13 +15,13 @@ export default function AddReview() {
 
 
   return (
-    <>
+    <div>
       <Button variant={mode === 'light' ? "outline-dark" : "outline-light"} onClick={handleShow}>
         Add Review<BiSolidCommentAdd className='ms-2'/>
       </Button>
 
       <FormAddReview show={show} handleClose={handleClose}/>
-    </>
+    </div>
   );
 }
 

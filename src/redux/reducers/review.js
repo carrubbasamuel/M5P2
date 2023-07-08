@@ -102,6 +102,8 @@ const initialState = {
   StateRating: 0, // Stato del rating
   Loading: false, // Stato di caricamento
   CurrentReview: {}, // Commento corrente
+  isMobile: false,
+  offcanvas: false
 };
 
 // Slice per il modulo review
@@ -131,6 +133,14 @@ const reviewSlice = createSlice({
         state.reviewArray[index].editMode = editMode;
       }
       state.CurrentReview = state.reviewArray[index];
+    },
+
+
+    setIsMobile: (state, action) => {
+      state.isMobile = action.payload;
+    },
+    setOffcanvas: (state, action) => {
+      state.offcanvas = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -154,10 +164,14 @@ const reviewSlice = createSlice({
 });
 
 export const {
+
   setReview,
   setAddButton,
   setAddRate,
-  setEditMode
+  setEditMode,
+  setIsMobile,
+  setOffcanvas
+
 } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

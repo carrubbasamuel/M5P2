@@ -20,3 +20,10 @@
     --bs-pagination-focus-color: black;
     --bs-pagination-active-border-color: black;
 }
+
+@media screen and (max-width: 768px){
+    .pagination a{
+        font-size: 8px!important;
+        padding: 7px!important;
+    } 
+}

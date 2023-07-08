@@ -8,8 +8,7 @@ import { setCurrentPage, setSearch } from "../../../../redux/reducers/bookAction
 import "./search.css";
 
 export default function Search() {
-  const location = useLocation();
-  const isLocationHome = location.pathname === '/';
+ 
   const dispatch = useDispatch();
   const search = useRef();
   const mode = useSelector((state) => state.root.modeRedux.mode);
@@ -23,7 +22,7 @@ export default function Search() {
   };
 
   return (
-    <div className={!isLocationHome ? "d-none" : "d-block"}>
+    <div>
       <InputGroup size="sm" className="p-5">
         <div className={`d-flex justify-content-center align-items-center me-1 fs-4 ${mode === 'light' ? "text-dark" : "text-light"}`}>
           <AiOutlineSearch />

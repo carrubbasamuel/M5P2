@@ -1,9 +1,9 @@
 
-div.col-3{
+div.halo{
     padding: 0px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
     border-radius: 10px;
-    max-height: 700px;
+    
     margin: 10px;
     transition: all 0.3s ease-in-out;
 }

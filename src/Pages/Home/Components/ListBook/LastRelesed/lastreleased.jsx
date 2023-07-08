@@ -11,7 +11,7 @@ export default function LastRelesed() {
   const mode = useSelector((state) => state.root.modeRedux.mode);
 
   useEffect(() => {
-    const fade = document.querySelectorAll("div.col-3");
+    const fade = document.querySelectorAll("div.halo");
     fade.forEach((element) => {
       element.classList.add("fade");
     });
@@ -26,8 +26,8 @@ export default function LastRelesed() {
 
   return (
     <div className={mode === 'light' ? "bg-light" : "bg-dark"}>
-      <div className="row">
-        <div className="col-7">
+      <div className="row notover">
+        <div className="col-12 col-md-7">
           <div className="row justify-content-center align-items-center">
             {bookArray.length > 0 ? (
               bookArray.map((book, index) => (
