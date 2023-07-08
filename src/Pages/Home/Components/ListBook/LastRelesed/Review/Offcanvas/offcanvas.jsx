@@ -36,7 +36,8 @@ export default function OffcanvasReview() {
           {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
           {Loading === false && reviewArray.length === 0 &&
             <div className='d-flex flex-column align-items-center justify-content-center'>
-              <p className='fs-1'>No reviews</p>
+              <AddReview />
+              <p className='fs-1 mt-5'>No reviews</p>
               <div className='canvas'>
                 <BsEmojiExpressionless />
                 <h3 className='text-center'>Be the first to write a review</h3>
@@ -44,7 +45,7 @@ export default function OffcanvasReview() {
               </div>
              
             </div>}
-            <AddReview className="mt-5" />
+            
         </Offcanvas.Body>
       </Offcanvas>
     </>

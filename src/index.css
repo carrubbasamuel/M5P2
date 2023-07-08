@@ -5,10 +5,19 @@
  
 }
 
+html {
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  touch-callout: none;
+}
+
+
+
 body {
   background-color: #f5f5f5;
   font-family: 'Roboto', sans-serif;
   margin-top: 120px;
+  touch-action: manipulation;
 }
 
 
