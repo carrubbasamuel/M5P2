@@ -80,12 +80,14 @@ const bookSlice = createSlice({
 });
 
 export const {
+
   setCategory,
   setSearch,
   setSelect,
   setAsin,
   setBookDetail,
   setCurrentPage,
+  
 } = bookSlice.actions;
 
 export default bookSlice.reducer;

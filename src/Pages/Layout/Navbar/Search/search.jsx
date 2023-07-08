@@ -17,6 +17,7 @@ export default function Search() {
   const handlerInput = () => {
     dispatch(setSearch(search.current.value)); // Imposta la stringa di ricerca nel redux store
     if (search.current.value === '') {
+      console.log("ciao");
       dispatch(setCurrentPage(1)); // Reimposta la pagina corrente a 1 se la stringa di ricerca è vuota
     }
   };
