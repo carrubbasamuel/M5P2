@@ -29,11 +29,11 @@ export default function OffcanvasReview() {
         <Offcanvas.Header closeButton >
           <Offcanvas.Title>Reviews...</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body >
+        <Offcanvas.Body className='d-flex flex-column align-items-center' >
           {Loading === false && reviewArray && reviewArray.map((review) => (
             <ReviewContent key={review._id} review={review} />
           ))}
-          {Loading === true && <h1>Loading...</h1>}
+          {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
           {Loading === false && reviewArray.length === 0 &&
             <div className='d-flex flex-column align-items-center justify-content-center'>
               <p className='fs-1'>No reviews</p>
@@ -42,8 +42,9 @@ export default function OffcanvasReview() {
                 <h3 className='text-center'>Be the first to write a review</h3>
                
               </div>
-              <AddReview className="mt-5" />
+             
             </div>}
+            <AddReview className="mt-5" />
         </Offcanvas.Body>
       </Offcanvas>
     </>

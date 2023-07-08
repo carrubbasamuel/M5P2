@@ -8,7 +8,6 @@ import OffcanvasReview from './Offcanvas/offcanvas';
 
 export default function Review() {
   const location = useLocation();
-  console.log(location.pathname);
   const isLocationDetails = location.pathname.startsWith('/book/');
   const dispatch = useDispatch();
   const isMobile = useSelector((state) => state.root.review.isMobile);
