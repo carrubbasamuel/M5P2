@@ -30,13 +30,15 @@ export default function OffcanvasReview() {
           <Offcanvas.Title>Reviews...</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className='d-flex flex-column align-items-center' >
+        <AddReview />
           {Loading === false && reviewArray && reviewArray.map((review) => (
             <ReviewContent key={review._id} review={review} />
           ))}
           {Loading === true ? <div className="spinner-border text-secondary" role="status"></div> : null}
+          
           {Loading === false && reviewArray.length === 0 &&
             <div className='d-flex flex-column align-items-center justify-content-center'>
-              <AddReview />
+              
               <p className='fs-1 mt-5'>No reviews</p>
               <div className='canvas'>
                 <BsEmojiExpressionless />
